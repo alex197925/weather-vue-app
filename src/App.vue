@@ -2,7 +2,7 @@
 <template>
   <div class="wrapper">
     <h1>Weather App</h1>
-    <p>Weather in your {{ city == "" ? "city" : city }}</p>
+    <p>Weather in your {{ city == "" ? "city" : cityName }}</p>
     <input v-model="city" type="text" placeholder="City..." />
     <button @click="" v-if="city !== ''">Get Weather</button>
     <button disabled v-else>Type your city !</button>
@@ -15,6 +15,12 @@ export default {
     return {
       city: "",
     };
+  },
+
+  computed: {
+    cityName() {
+      return " < " + this.city + " > ";
+    },
   },
 };
 </script>
