@@ -7,15 +7,18 @@
     <button @click="getWeather" v-if="city !== ''">Get Weather</button>
     <button disabled v-else>Type your city !</button>
     <p class="error">{{ error }}</p>
+    <p>{{ info }}</p>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
       city: "",
       error: "",
+      info: null,
     };
   },
 
@@ -25,6 +28,12 @@ export default {
         this.error = "City name have to be longer!!";
         return false;
       }
+      this.error = "";
+      axios
+        .get(
+          `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=metric&appid=2d8027559ee4c08ed99ff31fa9fb7e6e`
+        )
+        .then((res) => (this.info = res));
     },
   },
 
@@ -97,3 +106,5 @@ export default {
   transform: scale(1.1) translateY(-5px);
 }
 </style>
+
+API_key = "2d8027559ee4c08ed99ff31fa9fb7e6e"
