@@ -4,7 +4,8 @@
     <h1>Weather App</h1>
     <p>Weather in your {{ city == "" ? "city" : city }}</p>
     <input v-model="city" type="text" placeholder="City..." />
-    <button @click="" v-show="city !== ''">Get Weather</button>
+    <button @click="" v-if="city !== ''">Get Weather</button>
+    <button disabled v-else>Type your city !</button>
   </div>
 </template>
 
@@ -48,6 +49,12 @@ export default {
   color: #fcfcfc;
   font-size: 14px;
   outline: none;
+}
+
+.wrapper button:disabled {
+  background: #5a4202;
+  border: 2px solid rgb(238, 141, 106);
+  cursor: not-allowed;
 }
 
 .wrapper input:focus {
