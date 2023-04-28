@@ -8,8 +8,8 @@
     <button disabled v-else>Type your city !</button>
     <p class="error">{{ error }}</p>
 
-    <div>
-      {{ this.info }}
+    <div v-if="info != null">
+      {{ info.weather.description }}
       <p>{{ showTemp }}</p>
       <p>{{ showFeelsLike }}</p>
       <p>{{ showMinTemp }}</p>
