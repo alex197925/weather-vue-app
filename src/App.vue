@@ -7,7 +7,7 @@
     <button @click="getWeather" v-if="city !== ''">Get Weather</button>
     <button disabled v-else>Type your city !</button>
     <p class="error">{{ error }}</p>
-    <p>{{ info }}</p>
+    <p v-show="info != null">{{ info.main.temp }}</p>
   </div>
 </template>
 
@@ -33,7 +33,7 @@ export default {
         .get(
           `https://api.openweathermap.org/data/2.5/weather?q=${this.city}&units=metric&appid=2d8027559ee4c08ed99ff31fa9fb7e6e`
         )
-        .then((res) => (this.info = res));
+        .then((res) => (this.info = res.data));
     },
   },
 
