@@ -2,13 +2,21 @@
 <template>
   <div class="wrapper">
     <h1>Weather App</h1>
-    <p>Weather in your City</p>
-    <input type="text" placeholder="City..." />
-    <button>Get Weather</button>
+    <p>Weather in your {{ city == "" ? "city" : city }}</p>
+    <input v-model="city" type="text" placeholder="City..." />
+    <button @click="" v-show="city !== ''">Get Weather</button>
   </div>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      city: "",
+    };
+  },
+};
+</script>
 
 <style scoped>
 .wrapper {
