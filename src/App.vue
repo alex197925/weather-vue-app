@@ -4,8 +4,9 @@
     <h1>Weather App</h1>
     <p>Weather in your {{ city == "" ? "city" : cityName }}</p>
     <input v-model="city" type="text" placeholder="City..." />
-    <button @click="" v-if="city !== ''">Get Weather</button>
+    <button @click="getWeather" v-if="city !== ''">Get Weather</button>
     <button disabled v-else>Type your city !</button>
+    <p class="error">{{ error }}</p>
   </div>
 </template>
 
@@ -14,7 +15,17 @@ export default {
   data() {
     return {
       city: "",
+      error: "",
     };
+  },
+
+  methods: {
+    getWeather() {
+      if (this.city.trim().length < 2) {
+        this.error = "City name have to be longer!!";
+        return false;
+      }
+    },
   },
 
   computed: {
@@ -26,6 +37,9 @@ export default {
 </script>
 
 <style scoped>
+.error {
+  color: red;
+}
 .wrapper {
   width: 900px;
   height: 500px;
